@@ -2,17 +2,17 @@
 $OrgProjectName = "SampleTemplate"
 $NewProjectName = "testtest"
 
-$orgForm = "Form1"
+$orgForm = "MyForm"
 $NewForm = "TestForm"
 
 # SampleTemplate
 function eChange($fileName, $ext){
-    (Get-Content "$fileName").replace($OrgProjectName, $NewProjectName).replace($orgForm, $NewForm) | Set-Content "$fileName"
+    (Get-Content "$fileName").replace($OrgProjectName, $NewProjectName).replace($orgForm, $NewForm) | Set-Content -Encoding utf8 "$fileName"
     Rename-Item -Path $fileName -NewName $NewProjectName$ext
 }
 
 function eChange2($fileName, $ext){
-    (Get-Content "$fileName").replace($OrgProjectName, $NewProjectName).replace($orgForm, $NewForm) | Set-Content "$fileName"
+    (Get-Content "$fileName").replace($OrgProjectName, $NewProjectName).replace($orgForm, $NewForm) | Set-Content -Encoding utf8 "$fileName"
     Rename-Item -Path $fileName -NewName $NewForm$ext
 }
 eChange "$OrgProjectName.sln" ".sln"
